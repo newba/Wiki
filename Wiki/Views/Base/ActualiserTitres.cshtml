@@ -1,0 +1,9 @@
+﻿@using Wiki.Resources.Shared
+
+<h4>@StringShared.Articles</h4> 
+<hr />
+@foreach (var item in ViewBag.articles)
+{
+    <a href="@Url.Action("Details", "Home", new { id = item.ToString() })">@item.ToString()</a>
+    <br />
+}

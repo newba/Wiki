@@ -1,0 +1,28 @@
+﻿@model Wiki.Models.DAL.Article
+@using Wiki.Resources.Models
+@using Wiki.Resources.Views
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2>@Html.DisplayFor(model => model.Titre)</h2>
+    <hr />
+    @Html.Raw(Model.Contenu)
+</div>
+<hr />
+<p>
+    @StringArticles.DerniereMiseAJour : @Html.DisplayFor(model => model.DateModification)
+    <br />
+    @StringArticle.Revision : @Html.DisplayFor(model => model.Revision)
+    <br />
+    @StringArticle.IdContributeur : @Html.DisplayFor(model => model.IdContributeur)
+</p>
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink(StringArticles.ModifierLien, "Modifier", new { id = Model.Titre }, new { @class = "btn btn-default" })
+    }
+</p>

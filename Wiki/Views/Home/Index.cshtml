@@ -1,0 +1,55 @@
+﻿@model Wiki.Models.DAL.Article
+@using Wiki.Resources.Views
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div>
+        <h1>@StringIndex.Bienvenue <span class="brand">WIKI</span></h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            <br /><br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+    </div>
+    <hr />
+    using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <span class="control-label col-md-2">@StringIndex.LabelVoirArticle</span>
+                    <div class="col-md-10">
+                        <input class="form-control" id="id" name="id" type="text" value="@StringIndex.InputTextRecherche" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input class="btn btn-default" type="submit" value="@StringIndex.BoutonVoirArticle" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div>
+        <h2>@Html.DisplayFor(model => model.Titre)</h2>
+        <hr />
+        @Html.Raw(Model.Contenu)
+    </div>
+}
+
